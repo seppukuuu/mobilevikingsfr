@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mobile Vikings - Final Fix</title>
+    <style>
+        @font-face {
+            font-family: "MrAlex-Bold";
+            src: url("https://db.onlinewebfonts.com/t/2791267c488b942eb80f4f69ea85603e.woff2") format("woff2");
+            font-weight: bold;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            /* Voorkomt de blauwe highlight box op mobiel */
+            -webkit-tap-highlight-color: transparent;
+            /* Optimaliseert touch-responsiviteit */
+            touch-action: manipulation;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100dvh;
+            background-color: #000000; /* [cite: 17, 211] */
+            font-family: "MrAlex-Bold", sans-serif; /* [cite: 23, 278] */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            /* Voorkomt tekstselectie tijdens het klikken */
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Achtergrondpatroon volgens de 5% regel [cite: 21, 271] */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(#cd0400 1.2px, transparent 1.2px); /* [cite: 17, 223] */
+            background-size: 25px 25px;
+            z-index: 1;
+            opacity: 0.35;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .headline-img {
+            width: 85%;
+            max-width: 350px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 30px;
+            /* De schaduw zorgt voor depth of field [cite: 24, 292] */
+            filter: drop-shadow(4px 4px 0px #000000);
+            pointer-events: none;
+        }
+
+        /* Verbeterde knop voor gsm [cite: 26, 327] */
+        .viking-button {
+            background-color: #cd0400; /* [cite: 17, 223] */
+            color: #ffffff;
+            font-family: "MrAlex-Bold", sans-serif;
+            font-size: 2.5rem;
+            padding: 18px 0;
+            border: none;
+            border-radius: 8px; /* Subtiele ronde hoeken [cite: 26, 328] */
+            text-transform: uppercase;
+            width: 100%;
+            max-width: 320px;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 6px 6px 0px #000000; /* [cite: 17, 216] */
+            filter: drop-shadow(0 0 15px rgba(205, 4, 0, 0.5));
+            /* De snelle transitie maakt de klik voelbaar op mobiel */
+            transition: all 0.05s linear;
+        }
+
+        /* Touch feedback: de knop zakt fysiek in bij aanraking */
+        .viking-button:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px #000000;
+            background-color: #b30300; /* Iets donkerder rood */
+        }
+
+        .footer {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            padding-bottom: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-img {
+            /* Minimale hoogte volgens brandbook [cite: 9, 112] */
+            height: 65px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-content">
+        <img src="MB frans.png" alt="Haal zoveel mogelijk uit je" class="headline-img">
+        
+        <button type="button" class="viking-button" ontouchstart="">
+            Internet
+        </button>
+    </div>
+
+    <div class="footer">
+        <img src="https://mobilevikings.be/static/img/logo-white.svg" alt="Mobile Vikings" class="logo-img">
+    </div>
+
+</body>
+</html>
